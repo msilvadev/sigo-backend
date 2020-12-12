@@ -1,13 +1,25 @@
 package br.com.gpimanager;
 
-import org.springframework.boot.SpringApplication;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.Banner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+@EnableJpaRepositories
 @SpringBootApplication
 public class GpiManagerApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(GpiManagerApplication.class, args);
-	}
+    private static final Logger LOGGER = LoggerFactory.getLogger(GpiManagerApplication.class);
+
+    public static void main(String[] args) {
+        LOGGER.info("Initializing GpiManagerApplication Application...");
+        new SpringApplicationBuilder()
+                .bannerMode(Banner.Mode.LOG)
+                .sources(GpiManagerApplication.class)
+                .run(args);
+        LOGGER.info("GpiManagerApplication has completed startup");
+    }
 
 }

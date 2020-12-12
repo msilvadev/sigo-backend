@@ -10,4 +10,9 @@ class GpiManagerApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	public void main() {
+		GpiManagerApplication.main(new String[] {});
+	}
+
 }
