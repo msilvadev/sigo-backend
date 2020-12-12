@@ -29,6 +29,8 @@ public class IndustrialProcessDto implements Serializable {
         this.end = end;
     }
 
+    public IndustrialProcessDto() { }
+
     public long getNumber() {
         return number;
     }

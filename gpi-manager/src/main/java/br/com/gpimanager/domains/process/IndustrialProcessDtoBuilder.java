@@ -2,11 +2,13 @@ package br.com.gpimanager.domains.process;
 
 public class IndustrialProcessDtoBuilder {
 
+    private IndustrialProcessDtoBuilder(){}
+
     public static IndustrialProcessDto build(IndustrialProcess industrialProcess) {
         return new IndustrialProcessDto(
                 industrialProcess.getNumber(),
-                industrialProcess.getProcessType().code,
-                industrialProcess.getProcessStatus().code,
+                industrialProcess.getProcessType().getCode(),
+                industrialProcess.getProcessStatus().getCode(),
                 industrialProcess.getDescription(),
                 industrialProcess.getStart(),
                 industrialProcess.getEnd() != null ? industrialProcess.getEnd() : null

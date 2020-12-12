@@ -18,15 +18,23 @@ public enum ProcessStatus {
         }
     }
 
-    public int code;
-    public String description;
+    private final int code;
+    private final String description;
 
-    private ProcessStatus(int code, String description) {
+    ProcessStatus(int code, String description) {
         this.code = code;
         this.description = description;
     }
 
     public static ProcessStatus valueOfCode(int code) {
         return map.get(code);
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }

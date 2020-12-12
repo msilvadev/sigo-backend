@@ -1,0 +1,42 @@
+[
+  {
+  "number": 0,
+  "processType": 0,
+  "processStatus": 1,
+  "description": "1 - Load from process.json",
+  "start": null,
+  "end": null
+  },
+  {
+    "number": 0,
+    "processType": 1,
+    "processStatus": 1,
+    "description": "2 - Load from process.json",
+    "start": null,
+    "end": null
+  },
+  {
+    "number": 0,
+    "processType": 2,
+    "processStatus": 1,
+    "description": "3 - Load from process.json",
+    "start": null,
+    "end": null
+  },
+  {
+    "number": 0,
+    "processType": 1,
+    "processStatus": 1,
+    "description": "4 - Load from process.json",
+    "start": null,
+    "end": null
+  },
+  {
+    "number": 0,
+    "processType": 1,
+    "processStatus": 1,
+    "description": "5 - Load from process.json",
+    "start": null,
+    "end": null
+  }
+]

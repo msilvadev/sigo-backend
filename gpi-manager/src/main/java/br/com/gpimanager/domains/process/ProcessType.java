@@ -16,8 +16,8 @@ public enum ProcessType {
         }
     }
 
-    public int code;
-    public String description;
+    private int code;
+    private String description;
 
     private ProcessType(int code, String description) {
         this.code = code;
@@ -26,5 +26,13 @@ public enum ProcessType {
 
     public static ProcessType valueOfCode(int code) {
         return map.get(code);
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }

@@ -8,11 +8,11 @@ class ProcessStatusTest {
 
     @Test
     void valueOfCode() {
-        assertThat(ProcessStatus.valueOfCode(0).description).isEqualTo(ProcessStatus.INITIATED.description);
-        assertThat(ProcessStatus.valueOfCode(1).description).isEqualTo(ProcessStatus.PROCESSING.description);
-        assertThat(ProcessStatus.valueOfCode(2).description).isEqualTo(ProcessStatus.SUCCESS.description);
-        assertThat(ProcessStatus.valueOfCode(3).description).isEqualTo(ProcessStatus.OVERDUE.description);
-        assertThat(ProcessStatus.valueOfCode(4).description).isEqualTo(ProcessStatus.FAILED.description);
+        assertThat(ProcessStatus.valueOfCode(0).getDescription()).isEqualTo(ProcessStatus.INITIATED.getDescription());
+        assertThat(ProcessStatus.valueOfCode(1).getDescription()).isEqualTo(ProcessStatus.PROCESSING.getDescription());
+        assertThat(ProcessStatus.valueOfCode(2).getDescription()).isEqualTo(ProcessStatus.SUCCESS.getDescription());
+        assertThat(ProcessStatus.valueOfCode(3).getDescription()).isEqualTo(ProcessStatus.OVERDUE.getDescription());
+        assertThat(ProcessStatus.valueOfCode(4).getDescription()).isEqualTo(ProcessStatus.FAILED.getDescription());
     }
 
     @Test

@@ -31,24 +31,24 @@ class IndustrialProcessDtoTest {
 
     @Test
     void getProcessType() {
-        assertThat(dto.getProcessType()).isEqualTo(ProcessType.DEFAULT.code);
+        assertThat(dto.getProcessType()).isEqualTo(ProcessType.DEFAULT.getCode());
     }
 
     @Test
     void setProcessType() {
-        dto.setProcessType(ProcessType.DEFAULT.code);
-        assertThat(dto.getProcessType()).isEqualTo(ProcessType.DEFAULT.code);
+        dto.setProcessType(ProcessType.DEFAULT.getCode());
+        assertThat(dto.getProcessType()).isEqualTo(ProcessType.DEFAULT.getCode());
     }
 
     @Test
     void getProcessStatus() {
-        assertThat(dto.getProcessStatus()).isEqualTo(ProcessStatus.INITIATED.code);
+        assertThat(dto.getProcessStatus()).isEqualTo(ProcessStatus.INITIATED.getCode());
     }
 
     @Test
     void setProcessStatus() {
-        dto.setProcessStatus(ProcessStatus.PROCESSING.code);
-        assertThat(dto.getProcessStatus()).isEqualTo(ProcessStatus.PROCESSING.code);
+        dto.setProcessStatus(ProcessStatus.PROCESSING.getCode());
+        assertThat(dto.getProcessStatus()).isEqualTo(ProcessStatus.PROCESSING.getCode());
     }
 
     @Test

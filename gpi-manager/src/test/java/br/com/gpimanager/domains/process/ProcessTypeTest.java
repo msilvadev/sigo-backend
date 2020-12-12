@@ -8,9 +8,9 @@ class ProcessTypeTest {
 
     @Test
     void valueOfCode() {
-        assertThat(ProcessType.valueOfCode(0).description).isEqualTo(ProcessType.DEFAULT.description);
-        assertThat(ProcessType.valueOfCode(1).description).isEqualTo(ProcessType.NEW_ORDER.description);
-        assertThat(ProcessType.valueOfCode(2).description).isEqualTo(ProcessType.DELIVERY_TISSUE.description);
+        assertThat(ProcessType.valueOfCode(0).getDescription()).isEqualTo(ProcessType.DEFAULT.getDescription());
+        assertThat(ProcessType.valueOfCode(1).getDescription()).isEqualTo(ProcessType.NEW_ORDER.getDescription());
+        assertThat(ProcessType.valueOfCode(2).getDescription()).isEqualTo(ProcessType.DELIVERY_TISSUE.getDescription());
     }
 
     @Test

@@ -56,8 +56,8 @@ class IndustrialProcessManagerServiceImplTest {
         IndustrialProcessDto result = service.saveIndustrialProcess(dto);
 
         assertThat(result.getNumber()).isEqualTo(process.getNumber());
-        assertThat(result.getProcessStatus()).isEqualTo(process.getProcessStatus().code);
-        assertThat(result.getProcessType()).isEqualTo(process.getProcessType().code);
+        assertThat(result.getProcessStatus()).isEqualTo(process.getProcessStatus().getCode());
+        assertThat(result.getProcessType()).isEqualTo(process.getProcessType().getCode());
         assertThat(result.getDescription()).isEqualTo(process.getDescription());
         assertThat(result.getStart()).isEqualTo(process.getStart());
     }
