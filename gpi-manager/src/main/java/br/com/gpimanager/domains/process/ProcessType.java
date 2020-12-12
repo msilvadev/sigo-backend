@@ -16,10 +16,10 @@ public enum ProcessType {
         }
     }
 
-    private int code;
-    private String description;
+    private final int code;
+    private final String description;
 
-    private ProcessType(int code, String description) {
+    ProcessType(int code, String description) {
         this.code = code;
         this.description = description;
     }
