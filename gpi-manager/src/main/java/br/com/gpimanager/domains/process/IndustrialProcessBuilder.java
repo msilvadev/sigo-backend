@@ -1,4 +1,4 @@
-package br.com.gpimanager.domain.process;
+package br.com.gpimanager.domains.process;
 
 import java.time.LocalDateTime;
 
@@ -17,7 +17,7 @@ public class IndustrialProcessBuilder {
         this.start = LocalDateTime.now();
     }
 
-    public IndustrialProcessBuilder withNumber(int number) {
+    public IndustrialProcessBuilder withNumber(long number) {
         this.number = number;
         return this;
     }

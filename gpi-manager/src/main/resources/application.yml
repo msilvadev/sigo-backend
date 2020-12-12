@@ -10,9 +10,13 @@ spring:
 
   jpa:
     database-platform:  org.hibernate.dialect.H2Dialect
+#  activemq:
+#    broker-url: tcp://localhost:61616
+#      topic: industrial.process
 
 server:
   port: 8090
+
 
 logging:
   config: src/main/resources/logback-dev.xml

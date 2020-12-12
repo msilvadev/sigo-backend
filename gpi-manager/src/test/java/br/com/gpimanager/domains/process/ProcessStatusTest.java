@@ -1,4 +1,4 @@
-package br.com.gpimanager.domain.process;
+package br.com.gpimanager.domains.process;
 
 import org.junit.jupiter.api.Test;
 
@@ -8,11 +8,11 @@ class ProcessStatusTest {
 
     @Test
     void valueOfCode() {
-        assertThat(ProcessStatus.valueOfCode(1).description).isEqualTo(ProcessStatus.INITIATED.description);
-        assertThat(ProcessStatus.valueOfCode(2).description).isEqualTo(ProcessStatus.PROCESSING.description);
-        assertThat(ProcessStatus.valueOfCode(3).description).isEqualTo(ProcessStatus.SUCCESS.description);
-        assertThat(ProcessStatus.valueOfCode(4).description).isEqualTo(ProcessStatus.OVERDUE.description);
-        assertThat(ProcessStatus.valueOfCode(5).description).isEqualTo(ProcessStatus.FAILED.description);
+        assertThat(ProcessStatus.valueOfCode(0).description).isEqualTo(ProcessStatus.INITIATED.description);
+        assertThat(ProcessStatus.valueOfCode(1).description).isEqualTo(ProcessStatus.PROCESSING.description);
+        assertThat(ProcessStatus.valueOfCode(2).description).isEqualTo(ProcessStatus.SUCCESS.description);
+        assertThat(ProcessStatus.valueOfCode(3).description).isEqualTo(ProcessStatus.OVERDUE.description);
+        assertThat(ProcessStatus.valueOfCode(4).description).isEqualTo(ProcessStatus.FAILED.description);
     }
 
     @Test

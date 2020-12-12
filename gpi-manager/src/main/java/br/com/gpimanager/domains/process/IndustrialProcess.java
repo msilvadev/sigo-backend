@@ -1,4 +1,4 @@
-package br.com.gpimanager.domain.process;
+package br.com.gpimanager.domains.process;
 
 import javax.persistence.*;
 import java.io.Serializable;

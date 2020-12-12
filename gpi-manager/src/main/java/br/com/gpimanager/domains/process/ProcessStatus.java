@@ -1,14 +1,14 @@
-package br.com.gpimanager.domain.process;
+package br.com.gpimanager.domains.process;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public enum ProcessStatus {
-    INITIATED(1,"Iniciado"),
-    PROCESSING(2,"Em processamento"),
-    SUCCESS(3,"Finalizado com sucesso"),
-    OVERDUE(4,"Processo em atraso"),
-    FAILED(5,"Falha no processo");
+    INITIATED(0,"Iniciado"),
+    PROCESSING(1,"Em processamento"),
+    SUCCESS(2,"Finalizado com sucesso"),
+    OVERDUE(3,"Processo em atraso"),
+    FAILED(4,"Falha no processo");
 
     private static final Map<Integer, ProcessStatus> map = new HashMap<>();
 
