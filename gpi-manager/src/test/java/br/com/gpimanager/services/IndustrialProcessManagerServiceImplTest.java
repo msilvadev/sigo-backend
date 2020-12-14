@@ -1,9 +1,6 @@
 package br.com.gpimanager.services;
 
-import br.com.gpimanager.domains.process.IndustrialProcess;
-import br.com.gpimanager.domains.process.IndustrialProcessBuilder;
-import br.com.gpimanager.domains.process.IndustrialProcessDto;
-import br.com.gpimanager.domains.process.IndustrialProcessRepository;
+import br.com.gpimanager.domains.process.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -30,14 +27,17 @@ class IndustrialProcessManagerServiceImplTest {
     @BeforeEach
     void setUp() {
         IndustrialProcessBuilder builder = new IndustrialProcessBuilder();
-        process = builder.withDescription("Test").build();
+        process = builder.withProcessType(ProcessType.NEW_ORDER).withDescription("Test").build();
         listSaved.add(process);
 
-        dto = new IndustrialProcessDto(0, 0, 0, "Test", start, null);
+        dto = new IndustrialProcessDto(0, 1, 0, "Test", start, null);
         listToSave.add(dto);
 
         IndustrialProcessRepository repository = Mockito.mock(IndustrialProcessRepository.class);
-        service = new IndustrialProcessManagerServiceImpl(repository);
+        DashboardReportService dashboardReportService = Mockito.mock(DashboardReportService.class);
+
+        service = new IndustrialProcessManagerServiceImpl(repository, dashboardReportService);
+
         when(repository.save(Mockito.any(IndustrialProcess.class))).thenReturn(process);
         when(repository.saveAll(Mockito.any(Iterable.class))).thenReturn(listSaved);
         when(repository.findAll()).thenReturn(listSaved);

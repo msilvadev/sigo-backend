@@ -1,18 +1,15 @@
 package br.com.gpimanager.controllers;
 
 import br.com.gpimanager.domains.dashboard.DashboardReportDto;
-import br.com.gpimanager.domains.process.ProcessType;
 import br.com.gpimanager.services.DashboardReportService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.ConcurrentMap;
 
 @RestController
 @RequestMapping("dashboard-report")
+@CrossOrigin(origins = "http://localhost:4200")
 public class DashboardReportController {
 
     private final DashboardReportService dashboardReportService;
@@ -22,12 +19,12 @@ public class DashboardReportController {
     }
 
     @GetMapping
-    public ResponseEntity<ConcurrentMap<ProcessType, DashboardReportDto>> getDashboardReport() {
+    public ResponseEntity<ConcurrentMap<Integer, DashboardReportDto>> getDashboardReport() {
         return ResponseEntity.ok(dashboardReportService.getDashboardReport());
     }
 
     @PostMapping("refresh-cache")
-    public ResponseEntity<ConcurrentMap<ProcessType, DashboardReportDto>> refreshCache() {
+    public ResponseEntity<ConcurrentMap<Integer, DashboardReportDto>> refreshCache() {
         dashboardReportService.initializeCache();
         return ResponseEntity.ok(dashboardReportService.getDashboardReport());
     }

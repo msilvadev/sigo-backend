@@ -68,12 +68,13 @@ class IndustrialProcessBuilderTest {
     @Test
     void shouldBeBuildWithDefaultValuesNumberProcessTypeProcessStatusAndStart() {
         IndustrialProcess build = builder
+                .withProcessType(ProcessType.NEW_ORDER)
                 .withDescription("Test")
                 .build();
 
         assertThat(build).isNotNull();
         assertThat(build.getNumber()).isZero();
-        assertThat(build.getProcessType()).isEqualTo(ProcessType.DEFAULT);
+        assertThat(build.getProcessType()).isEqualTo(ProcessType.NEW_ORDER);
         assertThat(build.getProcessStatus()).isEqualTo(ProcessStatus.INITIATED);
         assertThat(build.getDescription()).isEqualTo("Test");
         assertThat(build.getStart()).isNotNull();

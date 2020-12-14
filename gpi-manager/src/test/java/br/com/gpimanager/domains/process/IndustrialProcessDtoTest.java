@@ -14,7 +14,7 @@ class IndustrialProcessDtoTest {
 
     @BeforeEach
     void setUp() {
-        dto = new IndustrialProcessDto(1, 0, 0, "Test",
+        dto = new IndustrialProcessDto(1, 1, 0, "Test",
                 localDateTime, localDateTime);
     }
 
@@ -31,13 +31,13 @@ class IndustrialProcessDtoTest {
 
     @Test
     void getProcessType() {
-        assertThat(dto.getProcessType()).isEqualTo(ProcessType.DEFAULT.getCode());
+        assertThat(dto.getProcessType()).isEqualTo(ProcessType.NEW_ORDER.getCode());
     }
 
     @Test
     void setProcessType() {
-        dto.setProcessType(ProcessType.DEFAULT.getCode());
-        assertThat(dto.getProcessType()).isEqualTo(ProcessType.DEFAULT.getCode());
+        dto.setProcessType(ProcessType.NEW_ORDER.getCode());
+        assertThat(dto.getProcessType()).isEqualTo(ProcessType.NEW_ORDER.getCode());
     }
 
     @Test
@@ -86,7 +86,7 @@ class IndustrialProcessDtoTest {
 
     @Test
     void testEquals() {
-        IndustrialProcessDto dtoToEqual = new IndustrialProcessDto(1, 0, 0, "Test",
+        IndustrialProcessDto dtoToEqual = new IndustrialProcessDto(1, 1, 0, "Test",
                 localDateTime, localDateTime);
 
         assertThat(dto.equals(dtoToEqual)).isTrue();
@@ -94,7 +94,7 @@ class IndustrialProcessDtoTest {
 
     @Test
     void testHashCode() {
-        IndustrialProcessDto dtoToHash = new IndustrialProcessDto(1, 0, 0, "Test",
+        IndustrialProcessDto dtoToHash = new IndustrialProcessDto(1, 1, 0, "Test",
                 localDateTime, localDateTime);
 
         assertThat(dto.hashCode() == dtoToHash.hashCode()).isTrue();

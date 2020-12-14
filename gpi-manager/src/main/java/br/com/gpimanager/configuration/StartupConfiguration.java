@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.DependsOn;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.io.IOException;
@@ -30,28 +29,22 @@ public class StartupConfiguration {
     }
 
     @Bean("initialLoad")
-    CommandLineRunner runner(IndustrialProcessManagerService service) {
+    CommandLineRunner initialLoad(IndustrialProcessManagerService service) {
         return args -> {
-            // read json and write to db
+            // read json file and write to db
             ObjectMapper mapper = new ObjectMapper();
             TypeReference<List<IndustrialProcessDto>> typeReference = new TypeReference<List<IndustrialProcessDto>>(){};
             InputStream inputStream = TypeReference.class.getResourceAsStream("/json/process.json");
             try {
                 List<IndustrialProcessDto> processDtos = mapper.readValue(inputStream,typeReference);
                 service.saveIndustrialProcess(processDtos);
-                LOGGER.info("Load json data to test...");
+
+                dashboardReportService.initializeCache();
+
+                LOGGER.info("Load json with mock data to test!");
             } catch (IOException e){
                 LOGGER.info("Failed to load json data to test from /json/process.json, {}", e.getMessage());
             }
         };
     }
-
-    @Bean
-    @DependsOn("initialLoad")
-    public void loadDashboardReportCache() {
-        this.dashboardReportService.initializeCache();
-    }
-
-
-
 }

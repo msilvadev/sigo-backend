@@ -1,50 +1,51 @@
 package br.com.gpimanager.domains.dashboard;
 
-import br.com.gpimanager.domains.process.ProcessStatus;
+import br.com.gpimanager.domains.process.IndustrialProcessDto;
 import br.com.gpimanager.domains.process.ProcessType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class DashboardReportRepositoryTest {
 
     private DashboardReportRepository repository;
-    private final ProcessType processType = ProcessType.DEFAULT;
-    private Set<DashboardReportDto> newReports;
-    private DashboardReportDtoBuilder builder;
+    private final ProcessType processType = ProcessType.NEW_ORDER;
+    private DashboardReportDto dto;
+    private IndustrialProcessDto industrialProcessDto;
 
     @BeforeEach
     void setUp() {
         repository = new DashboardReportRepository();
-        newReports = new HashSet<>();
-        builder = new DashboardReportDtoBuilder();
+        repository.initialize();
 
-        newReports.add(builder.setQuantity(1).setStatus(1).build());
-        repository.addAll(processType, newReports);
+        DashboardReportDtoBuilder builder = new DashboardReportDtoBuilder();
+        this.dto = builder
+                .setInitiatedQuantity(1)
+                .setFailedQuantity(1)
+                .setOverdueQuantity(1)
+                .setProcessingQuantity(1)
+                .setSuccessQuantity(1)
+                .build();
+
+        repository.add(processType, this.dto);
+
+        industrialProcessDto = new IndustrialProcessDto(1, 1, 0, "Test",
+                LocalDateTime.now(), LocalDateTime.now());
     }
 
     @Test
-    void addAll() {
-        this.newReports.add(builder.setQuantity(1).setStatus(1).build());
-        repository.addAll(ProcessType.NEW_ORDER, this.newReports);
+    void add() {
+        repository.add(ProcessType.NEW_ORDER, this.dto);
 
-        assertThat(repository.getAllDashboardReports()).hasSize(2);
+        assertThat(repository.getAllDashboardReports()).hasSize(1);
     }
 
     @Test
     void getAllDashboardReports() {
         assertThat(repository.getAllDashboardReports()).isNotEmpty();
-    }
-
-    @Test
-    void getByProcessType() {
-        DashboardReportDto dto = repository.getByProcessType(this.processType);
-
-        assertThat(dto.getStatus()).isEqualTo(ProcessStatus.valueOfCode(1).getCode());
     }
 
     @Test
@@ -54,21 +55,19 @@ class DashboardReportRepositoryTest {
 
     @Test
     void update() {
-        DashboardReportDto update = builder.setQuantity(1).setStatus(1).build();
-        repository.update(this.processType, update);
+        repository.update(industrialProcessDto);
 
         DashboardReportDto result = repository.getByProcessType(this.processType);
 
-        assertThat(result.getQuantity()).isEqualTo(2);
+        assertThat(result.getInitiatedQuantity()).isEqualTo(2);
     }
 
     @Test
     void tryUpdateWhenNotExistYet() {
-        DashboardReportDto update = builder.setQuantity(1).setStatus(1).build();
-        repository.update(ProcessType.DELIVERY_TISSUE, update);
+        repository.update(industrialProcessDto);
 
         DashboardReportDto result = repository.getByProcessType(this.processType);
 
-        assertThat(result.getQuantity()).isEqualTo(1);
+        assertThat(result.getFailedQuantity()).isEqualTo(1);
     }
 }

@@ -11,22 +11,33 @@ class DashboardReportDtoTest {
 
     @BeforeEach
     void setUp() {
-        dashboardReportDto = new DashboardReportDto(1, 1);
+        dashboardReportDto = new DashboardReportDto(
+                1, 1,
+                1, 1 ,1);
     }
 
     @Test
-    void getQuantity() {
-        assertThat(dashboardReportDto.getQuantity()).isEqualTo(1);
+    void getInitiatedQuantity() {
+        assertThat(dashboardReportDto.getInitiatedQuantity()).isEqualTo(1);
     }
 
     @Test
-    void getStatus() {
-        assertThat(dashboardReportDto.getStatus()).isEqualTo(1);
+    void getProcessingQuantity() {
+        assertThat(dashboardReportDto.getProcessingQuantity()).isEqualTo(1);
     }
 
     @Test
-    void setQuantity() {
-        dashboardReportDto.setQuantity(1);
-        assertThat(dashboardReportDto.getQuantity()).isEqualTo(2);
+    void getSuccessQuantity() {
+        assertThat(dashboardReportDto.getSuccessQuantity()).isEqualTo(1);
+    }
+
+    @Test
+    void getOverdueQuantity() {
+        assertThat(dashboardReportDto.getOverdueQuantity()).isEqualTo(1);
+    }
+
+    @Test
+    void getFailedQuantity() {
+        assertThat(dashboardReportDto.getFailedQuantity()).isEqualTo(1);
     }
 }

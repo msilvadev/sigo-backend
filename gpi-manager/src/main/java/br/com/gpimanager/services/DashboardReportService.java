@@ -1,7 +1,7 @@
 package br.com.gpimanager.services;
 
 import br.com.gpimanager.domains.dashboard.DashboardReportDto;
-import br.com.gpimanager.domains.process.ProcessType;
+import br.com.gpimanager.domains.process.IndustrialProcessDto;
 
 import java.util.concurrent.ConcurrentMap;
 
@@ -9,7 +9,7 @@ public interface DashboardReportService {
 
     void initializeCache();
 
-    void updateCacheDashboarReport(ProcessType processType, DashboardReportDto updateReport);
+    void updateCacheDashboarReport(IndustrialProcessDto process);
 
-    ConcurrentMap<ProcessType, DashboardReportDto> getDashboardReport();
+    ConcurrentMap<Integer, DashboardReportDto> getDashboardReport();
 }

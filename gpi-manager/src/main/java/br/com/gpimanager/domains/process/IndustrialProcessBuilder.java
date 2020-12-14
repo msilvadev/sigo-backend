@@ -12,7 +12,6 @@ public class IndustrialProcessBuilder {
 
     public IndustrialProcessBuilder() {
         this.number = 0;
-        this.processType = ProcessType.DEFAULT;
         this.processStatus = ProcessStatus.INITIATED;
         this.start = LocalDateTime.now();
     }

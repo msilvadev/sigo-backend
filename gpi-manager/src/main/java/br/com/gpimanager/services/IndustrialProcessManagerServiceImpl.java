@@ -14,9 +14,12 @@ import java.util.stream.Collectors;
 public class IndustrialProcessManagerServiceImpl implements IndustrialProcessManagerService {
 
     private final IndustrialProcessRepository repository;
+    private final DashboardReportService dashboardReportService;
 
-    public IndustrialProcessManagerServiceImpl(IndustrialProcessRepository repository) {
+    public IndustrialProcessManagerServiceImpl(IndustrialProcessRepository repository,
+                                               DashboardReportService dashboardReportService) {
         this.repository = repository;
+        this.dashboardReportService = dashboardReportService;
     }
 
     @Override
@@ -30,10 +33,12 @@ public class IndustrialProcessManagerServiceImpl implements IndustrialProcessMan
 
     @Override
     public synchronized IndustrialProcessDto saveIndustrialProcess(IndustrialProcessDto industrialProcessDto) {
-        IndustrialProcess saved = repository.save(IndustrialProcessDtoBuilder
-                .buildDtoToIndustrialProcess(industrialProcessDto));
+        IndustrialProcessDto saved = IndustrialProcessDtoBuilder.build(repository.save(IndustrialProcessDtoBuilder
+                .buildDtoToIndustrialProcess(industrialProcessDto)));
 
-        return IndustrialProcessDtoBuilder.build(saved);
+        dashboardReportService.updateCacheDashboarReport(saved);
+
+        return saved;
     }
 
     @Override

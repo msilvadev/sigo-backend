@@ -3,6 +3,7 @@ package br.com.gpimanager.services;
 import br.com.gpimanager.domains.dashboard.DashboardReportDto;
 import br.com.gpimanager.domains.dashboard.DashboardReportDtoBuilder;
 import br.com.gpimanager.domains.dashboard.DashboardReportRepository;
+import br.com.gpimanager.domains.process.IndustrialProcessDto;
 import br.com.gpimanager.domains.process.IndustrialProcessRepository;
 import br.com.gpimanager.domains.process.ProcessStatus;
 import br.com.gpimanager.domains.process.ProcessType;
@@ -11,9 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ExecutorService;
@@ -35,7 +34,6 @@ public class DashboardReportServiceImpl implements DashboardReportService {
         this.dashboardReportRepository = dashboardReportRepository;
 
         tasks = Collections.singletonList(() -> {
-            this.loadProcessTypeDefaultDashboardReport();
             this.loadProcessTypeNewOrderDashboardReport();
             this.loadProcessTypeDeliveryTissueDashboardReport();
         });
@@ -43,9 +41,11 @@ public class DashboardReportServiceImpl implements DashboardReportService {
 
     @Override
     public void initializeCache() {
-        LOGGER.info("Initialize Dashboard Report Cache...");
+        LOGGER.info("Loading Dashboard Report Cache...");
 
         long start = System.currentTimeMillis();
+
+        this.dashboardReportRepository.clearCache();
 
         this.executeAllTasks(tasks).join();
 
@@ -55,55 +55,35 @@ public class DashboardReportServiceImpl implements DashboardReportService {
     }
 
     @Override
-    public void updateCacheDashboarReport(ProcessType processType, DashboardReportDto updateReport) {
-        dashboardReportRepository.update(processType, updateReport);
+    public void updateCacheDashboarReport(IndustrialProcessDto process) {
+        dashboardReportRepository.update(process);
     }
 
     @Override
-    public ConcurrentMap<ProcessType, DashboardReportDto> getDashboardReport() {
+    public ConcurrentMap<Integer, DashboardReportDto> getDashboardReport() {
         return dashboardReportRepository.getAllDashboardReports();
     }
 
-    public void loadProcessTypeDefaultDashboardReport() {
-        DashboardReportDtoBuilder builder = new DashboardReportDtoBuilder();
-        Set<DashboardReportDto> reportList = new HashSet<>();
-
-        addDashboardReportToCache(ProcessType.DEFAULT, builder, reportList);
-    }
-
     public void loadProcessTypeNewOrderDashboardReport() {
-        DashboardReportDtoBuilder builder = new DashboardReportDtoBuilder();
-        Set<DashboardReportDto> reportList = new HashSet<>();
-
-        addDashboardReportToCache(ProcessType.NEW_ORDER, builder, reportList);
+        addDashboardReportToCache(ProcessType.NEW_ORDER);
     }
 
     public void loadProcessTypeDeliveryTissueDashboardReport() {
-        DashboardReportDtoBuilder builder = new DashboardReportDtoBuilder();
-        Set<DashboardReportDto> reportList = new HashSet<>();
-
-        addDashboardReportToCache(ProcessType.DELIVERY_TISSUE, builder, reportList);
+        addDashboardReportToCache(ProcessType.DELIVERY_TISSUE);
     }
 
-    private void addDashboardReportToCache(ProcessType processType, DashboardReportDtoBuilder builder,
-                                           Set<DashboardReportDto> reportList) {
-        reportList.add(builder.setQuantity(industrialProcessRepository.countByProcessTypeAndProcessStatus(processType, ProcessStatus.INITIATED))
-                .setStatus(ProcessStatus.INITIATED.getCode())
-                .build());
-        reportList.add(builder.setQuantity(industrialProcessRepository.countByProcessTypeAndProcessStatus(processType, ProcessStatus.PROCESSING))
-                .setStatus(ProcessStatus.PROCESSING.getCode())
-                .build());
-        reportList.add(builder.setQuantity(industrialProcessRepository.countByProcessTypeAndProcessStatus(processType, ProcessStatus.SUCCESS))
-                .setStatus(ProcessStatus.SUCCESS.getCode())
-                .build());
-        reportList.add(builder.setQuantity(industrialProcessRepository.countByProcessTypeAndProcessStatus(processType, ProcessStatus.OVERDUE))
-                .setStatus(ProcessStatus.OVERDUE.getCode())
-                .build());
-        reportList.add(builder.setQuantity(industrialProcessRepository.countByProcessTypeAndProcessStatus(processType, ProcessStatus.FAILED))
-                .setStatus(ProcessStatus.FAILED.getCode())
-                .build());
+    private void addDashboardReportToCache(ProcessType processType) {
+        DashboardReportDtoBuilder builder = new DashboardReportDtoBuilder();
 
-        this.dashboardReportRepository.addAll(processType, reportList);
+        DashboardReportDto report = builder
+                .setInitiatedQuantity(industrialProcessRepository.countByProcessTypeAndProcessStatus(processType, ProcessStatus.INITIATED))
+                .setProcessingQuantity(industrialProcessRepository.countByProcessTypeAndProcessStatus(processType, ProcessStatus.PROCESSING))
+                .setSuccessQuantity(industrialProcessRepository.countByProcessTypeAndProcessStatus(processType, ProcessStatus.SUCCESS))
+                .setOverdueQuantity(industrialProcessRepository.countByProcessTypeAndProcessStatus(processType, ProcessStatus.OVERDUE))
+                .setFailedQuantity(industrialProcessRepository.countByProcessTypeAndProcessStatus(processType, ProcessStatus.FAILED))
+                .build();
+
+        this.dashboardReportRepository.add(processType, report);
     }
 
     private CompletableFuture<Void> executeAllTasks(List<Runnable> tasks) {

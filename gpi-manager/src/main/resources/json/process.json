@@ -1,11 +1,19 @@
 [
   {
   "number": 0,
-  "processType": 0,
-  "processStatus": 1,
+  "processType": 1,
+  "processStatus": 0,
   "description": "1 - Load from process.json",
   "start": null,
   "end": null
+  },
+  {
+    "number": 0,
+    "processType": 1,
+    "processStatus": 1,
+    "description": "1b - Load from process.json",
+    "start": null,
+    "end": null
   },
   {
     "number": 0,
@@ -17,8 +25,8 @@
   },
   {
     "number": 0,
-    "processType": 2,
-    "processStatus": 1,
+    "processType": 1,
+    "processStatus": 2,
     "description": "3 - Load from process.json",
     "start": null,
     "end": null
@@ -26,7 +34,7 @@
   {
     "number": 0,
     "processType": 1,
-    "processStatus": 1,
+    "processStatus": 3,
     "description": "4 - Load from process.json",
     "start": null,
     "end": null
@@ -34,8 +42,40 @@
   {
     "number": 0,
     "processType": 1,
+    "processStatus": 4,
+    "description": "5 - Load from process.json",
+    "start": null,
+    "end": null
+  },
+  {
+    "number": 0,
+    "processType": 2,
+    "processStatus": 0,
+    "description": "4 - Load from process.json",
+    "start": null,
+    "end": null
+  },
+  {
+    "number": 0,
+    "processType": 2,
     "processStatus": 1,
     "description": "5 - Load from process.json",
+    "start": null,
+    "end": null
+  },
+  {
+    "number": 0,
+    "processType": 2,
+    "processStatus": 2,
+    "description": "5 - Load from process.json",
+    "start": null,
+    "end": null
+  },
+  {
+    "number": 0,
+    "processType": 2,
+    "processStatus": 2,
+    "description": "6 - Load from process.json",
     "start": null,
     "end": null
   }

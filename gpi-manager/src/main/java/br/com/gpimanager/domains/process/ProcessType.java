@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum ProcessType {
-    DEFAULT(0, "Tipo de processo não mapeado"),
     NEW_ORDER(1, "Novo pedido"),
     DELIVERY_TISSUE(2, "Entrega de tecido");
 
