@@ -1,6 +1,6 @@
 package br.com.sigowebapi.bridge.gcamanager.controllers;
 
-import br.com.sigowebapi.bridge.gcamanager.dto.DashboardAssistanceReportDto;
+import br.com.sigowebapi.bridge.gcamanager.dtos.DashboardAssistanceReportDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

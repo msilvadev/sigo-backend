@@ -1,4 +1,4 @@
-package br.com.sigowebapi.bridge.gcamanager.dto;
+package br.com.sigowebapi.bridge.gcamanager.dtos;
 
 import java.io.Serializable;
 

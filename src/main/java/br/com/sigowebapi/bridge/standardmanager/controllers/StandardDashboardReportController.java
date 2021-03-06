@@ -1,26 +1,24 @@
-package br.com.sigowebapi.bridge.gpimanager.controllers;
+package br.com.sigowebapi.bridge.standardmanager.controllers;
 
-import br.com.sigowebapi.bridge.gpimanager.dtos.DashboardReportDto;
+import br.com.sigowebapi.bridge.standardmanager.dtos.StandardDashboardReportDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.concurrent.ConcurrentMap;
-
 @RestController
-@RequestMapping("dashboard-report")
-public class GpiDashboardReportController {
+@RequestMapping("standard-dashboard-report")
+public class StandardDashboardReportController {
 
     @GetMapping
-    public ResponseEntity<ConcurrentMap<Integer, DashboardReportDto>> getDashboardReport() {
+    public ResponseEntity<StandardDashboardReportDto> getDashboardReport() {
         //TODO: Create service layer to call correct service...
         return null;
     }
 
     @PostMapping("refresh-cache")
-    public ResponseEntity<ConcurrentMap<Integer, DashboardReportDto>> refreshCache() {
+    public ResponseEntity<StandardDashboardReportDto> refreshCache() {
         //TODO: Create service layer to call correct service...
         return null;
     }

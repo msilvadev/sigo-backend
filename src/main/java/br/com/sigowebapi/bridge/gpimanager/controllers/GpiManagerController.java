@@ -1,6 +1,6 @@
 package br.com.sigowebapi.bridge.gpimanager.controllers;
 
-import br.com.sigowebapi.bridge.gpimanager.dto.IndustrialProcessDto;
+import br.com.sigowebapi.bridge.gpimanager.dtos.IndustrialProcessDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,6 +1,6 @@
 package br.com.sigowebapi.bridge.gcamanager.controllers;
 
-import br.com.sigowebapi.bridge.gcamanager.dto.AssistanceDto;
+import br.com.sigowebapi.bridge.gcamanager.dtos.AssistanceDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

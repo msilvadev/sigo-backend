@@ -1,4 +1,4 @@
-package br.com.sigowebapi.bridge.gpimanager.dto;
+package br.com.sigowebapi.bridge.gpimanager.dtos;
 
 import java.io.Serializable;
 
