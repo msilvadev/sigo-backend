@@ -18,7 +18,6 @@ import java.util.Map;
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class RefreshTokenCookiePreProcessorFilter implements Filter {
 
-
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
@@ -48,7 +47,7 @@ public class RefreshTokenCookiePreProcessorFilter implements Filter {
         @Override
         public Map<String, String[]> getParameterMap() {
             ParameterMap<String, String[]> map = new ParameterMap<>(getRequest().getParameterMap());
-            map.put("refresh_token", new String[] { refreshToken });
+            map.put("refresh_token", new String[]{refreshToken});
             map.setLocked(true);
             return map;
         }

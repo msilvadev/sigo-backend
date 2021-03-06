@@ -2,3 +2,36 @@
 22:34:17.702  INFO [main] b.c.s.WebApiApplicationTests:664 - The following profiles are active: dev
 22:34:29.686  WARN [main] o.s.s.o.p.t.s.JwtAccessTokenConverter:302 - Unable to create an RSA verifier from verifierKey (ignoreable if using MAC)
 22:34:31.878  INFO [main] b.c.s.WebApiApplicationTests:61 - Started WebApiApplicationTests in 15.466 seconds (JVM running for 18.334)
+23:21:35.695  INFO [restartedMain] br.com.sigowebapi.WebApiApplication:55 - Starting WebApiApplication using Java 15.0.2 on Matheuss-MacBook-Pro.local with PID 8110 (/Users/msilvadev/Documents/dev/workspace/sigo-web-api/target/classes started by msilvadev in /Users/msilvadev/Documents/dev/workspace/sigo-web-api)
+23:21:35.698  INFO [restartedMain] br.com.sigowebapi.WebApiApplication:664 - The following profiles are active: dev
+23:21:42.221  WARN [restartedMain] o.s.s.o.p.t.s.JwtAccessTokenConverter:302 - Unable to create an RSA verifier from verifierKey (ignoreable if using MAC)
+23:21:42.812  INFO [restartedMain] br.com.sigowebapi.WebApiApplication:61 - Started WebApiApplication in 7.834 seconds (JVM running for 9.216)
+23:21:56.883 ERROR [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool:497 - HikariPool-1 - Error thrown while acquiring connection from data source
+org.h2.jdbc.JdbcSQLNonTransientConnectionException: The database is open in exclusive mode; can not open additional connections [90135-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.engine.Session.checkSuspended(Session.java:1369)
+	at org.h2.engine.Session.transitionToState(Session.java:1361)
+	at org.h2.engine.Session.waitIfExclusiveModeEnabled(Session.java:1633)
+	at org.h2.command.Command.executeQuery(Command.java:186)
+	at org.h2.jdbc.JdbcConnection.isReadOnly(JdbcConnection.java:631)
+	at com.zaxxer.hikari.pool.PoolBase.setupConnection(PoolBase.java:402)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:363)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:477)
+	at com.zaxxer.hikari.pool.HikariPool.access$100(HikariPool.java:71)
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:725)
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:711)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+23:21:57.088  WARN [SpringContextShutdownHook] o.s.b.f.s.DisposableBeanAdapter:267 - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
+23:22:04.344  INFO [restartedMain] br.com.sigowebapi.WebApiApplication:55 - Starting WebApiApplication using Java 15.0.2 on Matheuss-MacBook-Pro.local with PID 8121 (/Users/msilvadev/Documents/dev/workspace/sigo-web-api/target/classes started by msilvadev in /Users/msilvadev/Documents/dev/workspace/sigo-web-api)
+23:22:04.346  INFO [restartedMain] br.com.sigowebapi.WebApiApplication:664 - The following profiles are active: dev
+23:22:07.524  WARN [restartedMain] o.s.s.o.p.t.s.JwtAccessTokenConverter:302 - Unable to create an RSA verifier from verifierKey (ignoreable if using MAC)
+23:22:08.036  INFO [restartedMain] br.com.sigowebapi.WebApiApplication:61 - Started WebApiApplication in 4.129 seconds (JVM running for 4.964)
+23:22:30.396  WARN [SpringContextShutdownHook] o.s.b.f.s.DisposableBeanAdapter:267 - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]

@@ -9,8 +9,8 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 @EnableConfigurationProperties(WebApiProperty.class)
 public class WebApiApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(WebApiApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(WebApiApplication.class, args);
+    }
 
 }

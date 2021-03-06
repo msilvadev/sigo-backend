@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class RefreshTokenPostProcessor implements ResponseBodyAdvice<OAuth2AccessToken> {
+
     @Autowired
     private WebApiProperty webApiProperty;
 

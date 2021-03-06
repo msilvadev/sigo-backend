@@ -29,7 +29,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     }
 
     @Bean
-    public MethodSecurityExpressionHandler createExpressionHandler(){
+    public MethodSecurityExpressionHandler createExpressionHandler() {
         return new OAuth2MethodSecurityExpressionHandler();
     }
 
