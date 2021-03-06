@@ -1,0 +1,4 @@
+22:34:17.700  INFO [main] b.c.s.WebApiApplicationTests:55 - Starting WebApiApplicationTests using Java 15.0.2 on Matheuss-MacBook-Pro.local with PID 7346 (started by msilvadev in /Users/msilvadev/Documents/dev/workspace/sigo-web-api)
+22:34:17.702  INFO [main] b.c.s.WebApiApplicationTests:664 - The following profiles are active: dev
+22:34:29.686  WARN [main] o.s.s.o.p.t.s.JwtAccessTokenConverter:302 - Unable to create an RSA verifier from verifierKey (ignoreable if using MAC)
+22:34:31.878  INFO [main] b.c.s.WebApiApplicationTests:61 - Started WebApiApplicationTests in 15.466 seconds (JVM running for 18.334)

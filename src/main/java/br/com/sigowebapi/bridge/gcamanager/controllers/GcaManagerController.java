@@ -1,4 +1,4 @@
-package br.com.sigowebapi.bridge.gcamanager.controller;
+package br.com.sigowebapi.bridge.gcamanager.controllers;
 
 import br.com.sigowebapi.bridge.gcamanager.dto.AssistanceDto;
 import org.springframework.http.ResponseEntity;

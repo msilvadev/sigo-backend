@@ -1,4 +1,4 @@
-package br.com.sigowebapi.bridge.gcamanager.controller;
+package br.com.sigowebapi.bridge.gcamanager.controllers;
 
 import br.com.sigowebapi.bridge.gcamanager.dto.DashboardAssistanceReportDto;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("gca-dashboard-report")
-public class GcaDashboardReport {
+public class GcaDashboardReportController {
 
 //    private final DashboardReportService dashboardReportService;
 //
