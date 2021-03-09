@@ -1,9 +1,10 @@
 package br.com.sigowebapi.bridge.gcamanager.controllers;
 
 import br.com.sigowebapi.bridge.gcamanager.dtos.DashboardAssistanceReportDto;
+import br.com.sigowebapi.bridge.shared.CallEndpointsService;
+import br.com.sigowebapi.bridge.shared.SigoMicrosservicesEndpointsUri;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,24 +12,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("gca-dashboard-report")
 public class GcaDashboardReportController {
 
-//    private final DashboardReportService dashboardReportService;
-//
-//    public DashboardReportController(DashboardReportService dashboardReportService) {
-//        this.dashboardReportService = dashboardReportService;
-//    }
+    private final CallEndpointsService service;
+
+    private final SigoMicrosservicesEndpointsUri endpointsUri;
+
+    public GcaDashboardReportController(CallEndpointsService service,
+                                        SigoMicrosservicesEndpointsUri endpointsUri) {
+        this.service = service;
+        this.endpointsUri = endpointsUri;
+    }
 
     @GetMapping
     public ResponseEntity<DashboardAssistanceReportDto> getDashboardReport() {
-        //TODO: Create service layer to call correct service...
-        return null;
-//        return ResponseEntity.ok(dashboardReportService.getDashboardReport());
+        String uri = endpointsUri.getGca() + "gca-dashboard-report";
+        return ResponseEntity.ok(service.get(uri, DashboardAssistanceReportDto.class));
     }
 
-    @PostMapping("refresh-cache")
-    public ResponseEntity<DashboardAssistanceReportDto> refreshCache() {
-        //TODO: Create service layer to call correct service...
-        return null;
-//        dashboardReportService.initializeCache();
-//        return ResponseEntity.ok(dashboardReportService.getDashboardReport());
-    }
 }
