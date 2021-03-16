@@ -26,9 +26,9 @@ server:
   port: 8091
 
 sigo-ms-endpoints-uri:
-  gca: http://localhost:8090/
+  gca: http://ec2-3-142-199-202.us-east-2.compute.amazonaws.com:8090/
   gpi: http://localhost:8090/
-  standard: http://localhost:8090/
+  standard: http://ec2-3-137-204-36.us-east-2.compute.amazonaws.com:8090/
 
 logging:
   config: src/main/resources/logback-dev.xml
