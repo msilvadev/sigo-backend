@@ -26,13 +26,13 @@ public class StandardManagerController {
 
     @GetMapping
     public ResponseEntity<StandardDto[]> listAllAssistance() {
-        String uri = endpointsUri.getGca() + "standard-manager";
+        String uri = endpointsUri.getStandard() + "standard-manager";
         return ResponseEntity.ok(service.listAll(uri, StandardDto[].class));
     }
 
     @PostMapping
     public ResponseEntity<StandardDto> saveAssistance(@RequestBody StandardDto input) {
-        String uri = endpointsUri.getGca() + "standard-manager";
+        String uri = endpointsUri.getStandard() + "standard-manager";
         return ResponseEntity.ok(service.saveGeneric(uri, input, StandardDto.class));
     }
 }
