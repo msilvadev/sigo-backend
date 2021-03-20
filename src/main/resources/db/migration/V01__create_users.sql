@@ -17,7 +17,7 @@ CREATE TABLE user_permission (
 	FOREIGN KEY (user_id) REFERENCES user(id),
 	FOREIGN KEY (permission_id) REFERENCES permission(id));
 
-INSERT INTO user (id, name, email, password) values (1, 'Administrador', 'admin@webapi.com', '$2a$10$X607ZPhQ4EgGNaYKt3n4SONjIv9zc.VMWdEuhCuba7oLAL5IvcL5.');
+INSERT INTO user (id, name, email, password) values (1, 'Administrador', 'admin@sigo.com', '$2a$10$X607ZPhQ4EgGNaYKt3n4SONjIv9zc.VMWdEuhCuba7oLAL5IvcL5.');
 
 -- INSERT INTO permission (id, description) values (1, 'ROLE_CADASTRAR_CATEGORIA');
 -- INSERT INTO permission (codigo, descricao) values (2, 'ROLE_PESQUISAR_CATEGORIA');
