@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties("webapi")
 public class WebApiProperty {
 
-    private String originAllowed = "http://localhost:4200";
+    private String originAllowed = "/**";
 
     private final Security security = new Security();
 
