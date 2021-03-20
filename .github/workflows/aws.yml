@@ -56,5 +56,5 @@ jobs:
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
           service: sigowebapi-service
-            cluster: sigowebapi
+          cluster: sigowebapi
           wait-for-service-stability: true
